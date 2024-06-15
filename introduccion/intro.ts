@@ -29,6 +29,7 @@ function sal(persona : {name: string, age: number}) {
     const {name,age} = persona
 }
 
+
 // Ts infiere en el valor que devuelve una funcion
 
 function edad(persona : {name: string, age: number}) {
@@ -163,6 +164,53 @@ const SOCCER = (bola:pelota) =>{
     return {
         tipo,
         medida,
-        isActive
+        isActive 
     }
 }
+
+//Type index
+
+type futbol = {
+    isActive: boolean
+    division: string
+    team: {
+        name: string
+        color: string
+    }
+}
+
+let pasion:futbol = {
+    isActive : true,
+    division : "A",
+    team:{
+        name: "Atl Nacional",
+        color: "Verde y Blanco"
+    }
+}
+
+const vamosVerde = (pasion:futbol['team']) => {
+    const  {
+        name,color
+    } = pasion
+    console.log(`El equipo mas importante y  grande del pais se llama ${name} y sus colores son ${color}`)
+}
+
+vamosVerde(pasion.team);
+
+// Arrays
+
+type liga = {
+    name: string
+    copas: number
+}
+
+let soccerTeam: liga[] = [
+    {name: "Atl Nacional", copas:17} ,
+    {name: "Medellin", copas:7},
+    {name: "Gallinas", copas:16}
+
+ ]
+
+ soccerTeam.forEach((team, key) => {
+    console.log(team.name + " " + team.copas)
+ })
